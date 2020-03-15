@@ -61,6 +61,8 @@ ChatBot::ChatBot(ChatBot&& rhs) :
 {
     std::cout << "ChatBot Move Constructor" << std::endl;
 
+    _chatLogic->SetChatbotHandle(this);
+
     rhs._image = NULL;
     rhs._chatLogic = nullptr;
     rhs._rootNode = nullptr;
@@ -112,6 +114,8 @@ ChatBot& ChatBot::operator=(ChatBot&& rhs)
 
     _currentNode = rhs._currentNode;
     rhs._currentNode = nullptr;
+
+    _chatLogic->SetChatbotHandle(this);
 
     return *this;
 }
